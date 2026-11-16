@@ -257,6 +257,16 @@ function setupSpy(nav, bar) {
   renderHours(document.getElementById("hours"));
   openChip(document.getElementById("today"));
   setupSpy(cats, document.getElementById("bar"));
+  // Deep links from Instagram link stickers: #autorskie #tacos #gratine #ricebox #dodatki #napoje #desery
+  function jump() {
+    var h = (location.hash || "").slice(1).toLowerCase();
+    if (!h) return;
+    if (h === "gratine") { gratine = true; paint(); h = "tacos"; }
+    var el = document.getElementById(h);
+    if (el) requestAnimationFrame(function () { el.scrollIntoView({ block: "start" }); });
+  }
+  jump();
+  window.addEventListener("hashchange", jump);
 })();
 </script>
 </body>
