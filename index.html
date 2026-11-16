@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Menu Bon Tacos – French tacos, plac Dominikański 3, Wrocław.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<title>Bon Tacos – Menu</title>
+<meta name="theme-color" content="#121618">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Poppins:wght@400;500;600;700;800;900&display=swap">
+<style>
+/* Layout: digital menu board. Ink screen, deep-red packshots glowing in a 2-col grid (4-col desktop),
+   giant category headers, yellow price badges, sticky tabs. Single dark look by choice. */
+:root {
+  --ink: #121618; --panel: #1b2023; --line: #2a3135;
+  --cream: #fff7ea; --muted: #a9a196;
+  --red: #ed1b2e; --wine: #9e1620; --yellow: #fec231;
+  --font-display: "Climate Crisis", "Arial Black", Impact, sans-serif;
+  --font-body: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--ink); color: var(--cream); font-family: var(--font-body); font-size: 15px; line-height: 1.35; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--ink); }
+img { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.gutter { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+header.top { display: flex; align-items: center; gap: 12px; padding-block: 16px 12px; }
+.logo { width: 52px; height: 52px; flex: none; border-radius: 50%; overflow: hidden; background: #fff; box-shadow: 0 0 0 3px var(--red); }
+.logo svg { width: 100%; height: 100%; display: block; }
+.brand { min-width: 0; flex: 1; }
+.brand b { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(22px, 6vw, 34px); line-height: 1; letter-spacing: .02em; text-transform: uppercase; }
+.brand small { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); font-weight: 500; }
+.chip { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); font-size: 12px; font-weight: 700; white-space: nowrap; }
+.chip i { width: 8px; height: 8px; border-radius: 50%; background: #2fd06f; box-shadow: 0 0 8px #2fd06f; }
+.chip.closed i { background: var(--muted); box-shadow: none; }
+
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(18, 22, 24, .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.tabrow { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); max-width: 1180px; margin: 0 auto; }
+.tabrow::-webkit-scrollbar { display: none; }
+.tabrow a { flex: none; min-height: 38px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 10px; color: var(--muted); text-decoration: none; font-weight: 700; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; }
+.tabrow a[aria-current="true"] { background: var(--yellow); color: var(--ink); }
+
+.sec { padding-top: 34px; scroll-margin-top: calc(70px + env(safe-area-inset-top, 0px)); }
+.sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; border-bottom: 3px solid var(--red); padding-bottom: 10px; }
+h2 { margin: 0; font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: clamp(28px, 8vw, 52px); line-height: .95; text-wrap: balance; }
+.sec-sub { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+
+.switch { display: inline-grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); }
+.switch button { border: 0; background: none; cursor: pointer; border-radius: 9px; min-height: 40px; padding: 0 14px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+.switch button[aria-pressed="true"] { background: var(--red); color: var(--cream); }
+
+.grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.tile { position: relative; display: grid; gap: 8px; }
+.ph { position: relative; aspect-ratio: 4 / 3; max-width: 100%; border-radius: 14px; overflow: hidden; background: radial-gradient(circle at 50% 40%, #b11c27, var(--wine) 70%); box-shadow: 0 10px 30px -10px rgba(237, 27, 46, .45); }
+.ph img { width: 100%; height: 100%; object-fit: cover; transition: opacity .2s; }
+.ph.noimg::after { content: attr(data-ph); position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-size: 22px; color: rgba(255, 247, 234, .5); text-transform: uppercase; }
+.badge { position: absolute; left: 8px; bottom: 8px; padding: 5px 10px 4px; border-radius: 8px; background: var(--yellow); color: var(--ink); font-weight: 900; font-size: 15px; font-variant-numeric: tabular-nums; box-shadow: 0 4px 12px rgba(0, 0, 0, .35); }
+.badge small { font-weight: 700; font-size: 10px; display: block; line-height: 1.1; }
+.name { font-weight: 600; font-size: 14px; line-height: 1.25; overflow-wrap: anywhere; }
+.tile.na .ph img { filter: grayscale(1); opacity: .35; }
+.tile.na .badge { background: var(--panel); color: var(--muted); font-size: 11px; font-weight: 700; }
+
+footer { margin-top: 48px; padding-block: 28px calc(32px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: #0d1012; }
+.foot { display: grid; gap: 24px; }
+footer h3 { margin: 0 0 8px; font-family: var(--font-display); font-weight: 400; font-size: 16px; text-transform: uppercase; color: var(--yellow); }
+footer p { margin: 0; font-size: 14px; }
+.hours { list-style: none; margin: 0; padding: 0; max-width: 320px; }
+.hours li { display: flex; justify-content: space-between; gap: 16px; padding: 4px 10px; border-radius: 8px; font-size: 14px; font-variant-numeric: tabular-nums; }
+.hours li.is-today { background: var(--yellow); color: var(--ink); font-weight: 800; }
+.fine { color: var(--muted); font-size: 12px; }
+
+@media (min-width: 760px) {
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+  .name { font-size: 15px; }
+  .badge { font-size: 17px; }
+  .foot { grid-template-columns: 1.2fr 1fr 1fr; }
+  .tabrow { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ph img { transition: none; } }
+</style>
+</head>
+<body>
+<header class="gutter top">
+  <div class="logo" role="img" aria-label="Logo Bon Tacos"><svg viewBox="0 0 293 293" version="1.1" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:10;"><g><g>
+<path d="M292.886,146.443c-0,-80.824 -65.619,-146.443 -146.443,-146.443c-80.824,0 -146.443,65.619 -146.443,146.443c0,80.824 65.619,146.443 146.443,146.443c80.824,-0 146.443,-65.619 146.443,-146.443Z" style="fill:#fff;"/>
+<path d="M44.925,146.295c0,21.188 6.501,40.857 17.605,57.134l29.43,-2.467l1.076,-3.423l22.942,3.546l3.913,9.355c4.823,-9.534 13.866,-15.296 25.449,-15.296c12.527,-0 19.956,4.342 24.376,9.748c4.533,-3.645 10.512,-5.697 17.489,-5.697c5.824,-0 12.217,1.4 16.993,6.121c3.612,-2.357 8.529,-3.857 14.915,-3.857c4.396,0 8.069,0.68 11.209,2.017c11.125,-16.285 17.639,-35.97 17.639,-57.181c0,-56.069 -45.451,-101.519 -101.517,-101.519c-56.069,0 -101.519,45.45 -101.519,101.519Z" style="fill:url(#_Radial1);fill-rule:nonzero;"/>
+<path d="M227.285,246.602c29.288,-23.548 48.052,-59.653 48.052,-100.159c-0,-70.957 -57.523,-128.479 -128.478,-128.479c-70.958,0 -128.479,57.522 -128.479,128.479c0,40.506 18.764,76.611 48.052,100.159" style="fill:none;fill-rule:nonzero;stroke:#ed1b2e;stroke-width:2.22px;"/>
+<path d="M61.552,213.722l27.292,-2.287l-0.152,8.59l-7.828,0.456l0.967,23.43l-9.759,-0.864l-0.915,-22.361l-8.334,1.016l-1.271,-7.98Z" style="fill:#121618;fill-rule:nonzero;"/>
+<path d="M108.368,230.357l-2.744,-7.586l-2.567,7.47l5.311,0.116Zm-20.359,15.408l11.664,-37.118l11.322,1.751l14.307,34.2l-13.783,2.1l-1.691,-7.295l-7.821,0.059l-2.334,7.062l-11.664,-0.759Z" style="fill:#121618;fill-rule:nonzero;"/>
+<path d="M166.834,239.578c-3.473,6.731 -9.847,10.415 -20.762,10.415c-11.55,-0 -21.472,-5.456 -21.472,-20.549c0,-15.235 8.627,-24.091 20.762,-24.091c12.33,0 18.566,4.958 21.047,12.967l-11.621,5.951c-0.78,-4.959 -4.011,-7.865 -7.582,-7.865c-4.191,0 -8.928,3.612 -8.928,10.771c-0,7.582 3.86,11.055 8.715,11.055c3.939,-0 7.086,-2.41 8.361,-5.882l11.48,7.228Z" style="fill:#121618;fill-rule:nonzero;"/>
+<path d="M179.126,227.877c-0,6.016 2.797,8.93 6.945,8.93c3.564,-0 5.311,-2.312 5.311,-9.047c-0,-5.019 -0.582,-9.104 -4.668,-9.104c-4.786,-0 -7.588,3.268 -7.588,9.221m-11.102,-0.058c0,-11.5 6.893,-18.501 18.339,-18.501c11.484,0 15.873,6.651 15.873,20.077c0,11.659 -6.395,16.633 -17.683,16.633c-10.746,-0 -16.529,-5.662 -16.529,-18.209" style="fill:#121618;fill-rule:nonzero;"/>
+<path d="M212.987,221.396c-0,1.585 2.745,1.78 5.387,2.319c9.564,1.954 12.808,4.787 12.808,11.2c-0,6.716 -5.766,8.894 -13.571,8.894c-7.493,-0 -11.535,-1.118 -15.247,-6.098l7.268,-5.692c1.423,2.643 4.516,3.76 7.166,3.76c2.593,-0 5.438,-0.304 5.438,-1.474c0,-1.189 -1.86,-2.064 -5.742,-2.896c-9.68,-2.077 -13.062,-4.202 -13.062,-10.52c-0,-5.997 5.737,-9.352 14.179,-9.352c7.99,0 11.234,2.439 13.723,6.962l-7.776,4.879c-0.864,-2.643 -3.049,-4.218 -5.845,-4.218c-2.666,0 -4.726,1.017 -4.726,2.236" style="fill:#121618;fill-rule:nonzero;"/>
+<path d="M59.762,210.909l27.867,-2.335l-0.155,8.772l-7.992,0.466l0.987,23.924l-9.965,-0.883l-0.933,-22.833l-8.512,1.037l-1.297,-8.148Z" style="fill:#ed1b2e;fill-rule:nonzero;"/>
+<path d="M107.565,227.896l-2.8,-7.746l-2.623,7.628l5.423,0.118Zm-20.788,15.732l11.91,-37.9l11.56,1.788l14.609,34.92l-14.073,2.146l-1.728,-7.45l-7.985,0.06l-2.383,7.211l-11.91,-0.775Z" style="fill:#ed1b2e;fill-rule:nonzero;"/>
+<path d="M167.264,237.311c-3.546,6.872 -10.054,10.635 -21.2,10.635c-11.794,0 -21.924,-5.572 -21.924,-20.982c0,-15.557 8.808,-24.6 21.2,-24.6c12.59,-0 18.957,5.063 21.489,13.239l-11.865,6.079c-0.796,-5.065 -4.096,-8.032 -7.742,-8.032c-4.278,0 -9.117,3.689 -9.117,10.998c-0,7.741 3.943,11.288 8.9,11.288c4.021,0 7.235,-2.461 8.537,-6.006l11.722,7.381Z" style="fill:#ed1b2e;fill-rule:nonzero;"/>
+<path d="M179.815,225.363c-0,6.142 2.857,9.117 7.092,9.117c3.639,0 5.423,-2.359 5.423,-9.236c-0,-5.125 -0.595,-9.295 -4.768,-9.295c-4.886,-0 -7.747,3.335 -7.747,9.414m-11.335,-0.06c0,-11.741 7.038,-18.889 18.725,-18.889c11.726,-0 16.208,6.79 16.208,20.499c-0,11.906 -6.53,16.983 -18.056,16.983c-10.974,0 -16.877,-5.779 -16.877,-18.593" style="fill:#ed1b2e;fill-rule:nonzero;"/>
+<path d="M214.39,218.746c-0,1.618 2.803,1.817 5.501,2.367c9.765,1.997 13.077,4.888 13.077,11.437c0,6.857 -5.886,9.082 -13.856,9.082c-7.652,-0 -11.78,-1.142 -15.568,-6.228l7.42,-5.812c1.453,2.699 4.611,3.839 7.318,3.839c2.647,0 5.553,-0.31 5.553,-1.504c0,-1.214 -1.9,-2.108 -5.864,-2.958c-9.885,-2.119 -13.337,-4.29 -13.337,-10.742c0,-6.123 5.857,-9.549 14.478,-9.549c8.158,-0 11.47,2.492 14.011,7.11l-7.939,4.981c-0.882,-2.697 -3.114,-4.306 -5.968,-4.306c-2.722,0 -4.826,1.036 -4.826,2.283" style="fill:#ed1b2e;fill-rule:nonzero;"/>
+<clipPath id="_clip2"><path d="M44.925,146.295c0,21.188 6.501,40.857 17.605,57.134l29.43,-2.467l1.076,-3.423l22.942,3.546l3.913,9.355c4.823,-9.534 13.866,-15.296 25.449,-15.296c12.527,-0 19.956,4.342 24.376,9.748c4.533,-3.645 10.512,-5.697 17.489,-5.697c5.824,-0 12.217,1.4 16.993,6.121c3.612,-2.357 8.529,-3.857 14.915,-3.857c4.396,0 8.069,0.68 11.209,2.017c11.125,-16.285 17.639,-35.97 17.639,-57.181c0,-56.069 -45.451,-101.519 -101.517,-101.519c-56.069,0 -101.519,45.45 -101.519,101.519Z" clip-rule="nonzero"/></clipPath>
+<g clip-path="url(#_clip2)"><path d="M86.825,199.452c2.893,3.083 6.131,6.491 9.638,10.141c-3.192,3.284 -16.114,2.655 -19.095,-0.353c3.043,-3.175 6.2,-6.446 9.457,-9.788m11.501,-11.669c2.93,3.044 6.204,6.408 9.744,10.022c-3.177,3.184 -6.275,6.325 -9.295,9.414c-3.576,-3.576 -6.907,-6.887 -9.914,-9.851c3.074,-3.141 6.229,-6.341 9.465,-9.585m11.635,-11.514c2.959,3.001 6.271,6.326 9.849,9.902c-3.083,3.021 -6.224,6.124 -9.41,9.304c-3.616,-3.54 -6.984,-6.813 -10.028,-9.737c3.246,-3.241 6.446,-6.398 9.589,-9.469m11.892,-11.487c2.991,2.961 6.338,6.249 9.956,9.79c-3.13,2.985 -6.347,6.087 -9.63,9.287c-3.652,-3.503 -7.058,-6.734 -10.138,-9.618c3.351,-3.26 6.629,-6.417 9.812,-9.459m12.243,-11.604c3.036,2.935 6.442,6.203 10.121,9.732c-3.18,2.943 -6.519,6.069 -9.972,9.347c-3.695,-3.47 -7.144,-6.664 -10.261,-9.507c3.518,-3.352 6.904,-6.552 10.112,-9.572m12.658,-11.902c3.128,2.949 6.651,6.254 10.464,9.838c-3.176,2.817 -6.693,5.994 -10.464,9.457c-3.768,-3.463 -7.288,-6.64 -10.463,-9.457c3.811,-3.585 7.336,-6.889 10.463,-9.838m22.771,21.474c-3.117,2.843 -6.567,6.037 -10.262,9.507c-3.454,-3.278 -6.792,-6.404 -9.971,-9.347c3.676,-3.531 7.083,-6.797 10.121,-9.732c3.206,3.02 6.595,6.22 10.112,9.572m11.942,11.491c-3.079,2.884 -6.485,6.115 -10.137,9.618c-3.283,-3.2 -6.502,-6.302 -9.63,-9.287c3.616,-3.541 6.965,-6.827 9.956,-9.79c3.18,3.041 6.46,6.198 9.811,9.459m11.67,11.497c-3.045,2.925 -6.415,6.196 -10.029,9.737c-3.186,-3.18 -6.324,-6.283 -9.41,-9.304c3.577,-3.576 6.887,-6.901 9.848,-9.902c3.145,3.071 6.343,6.228 9.591,9.469m11.511,11.63c-3.008,2.964 -6.338,6.275 -9.916,9.851c-3.019,-3.089 -6.118,-6.23 -9.295,-9.414c3.544,-3.614 6.817,-6.978 9.745,-10.022c3.236,3.245 6.396,6.444 9.466,9.585m11.493,11.872c-2.977,3.008 -15.904,3.637 -19.095,0.353c3.505,-3.65 6.743,-7.058 9.638,-10.141c3.255,3.342 6.412,6.613 9.457,9.788m-42.915,0.941c3.322,-3.353 6.515,-6.58 9.534,-9.651c3.172,3.175 6.269,6.304 9.292,9.373c-3.044,3.047 -15.671,3.44 -18.826,0.278m-11.829,-11.757c3.346,-3.327 6.561,-6.524 9.608,-9.563c3.07,3.019 6.199,6.118 9.376,9.289c-3.074,3.019 -6.3,6.208 -9.654,9.531c-3.164,-3.157 -6.275,-6.246 -9.33,-9.257m-12.053,11.985c3.226,-3.211 6.373,-6.339 9.42,-9.368c3.047,3.017 6.158,6.107 9.318,9.264c-3.052,3.031 -15.692,3.124 -18.738,0.104m-12.052,-11.885c3.235,-3.197 6.399,-6.307 9.462,-9.315c3.065,3.008 6.226,6.118 9.463,9.315c-3.067,3.006 -6.229,6.118 -9.463,9.319c-3.234,-3.201 -6.395,-6.313 -9.462,-9.319m-11.865,11.781c3.161,-3.157 6.27,-6.247 9.317,-9.264c3.047,3.029 6.194,6.157 9.42,9.368c-3.047,3.02 -15.686,2.925 -18.737,-0.104m18.73,-23.642c-3.087,2.985 -6.264,6.081 -9.512,9.271c-3.376,-3.298 -6.63,-6.456 -9.729,-9.443c3.268,-3.201 6.459,-6.31 9.557,-9.31c3.073,3.007 6.314,6.177 9.684,9.482m14.877,-9.482c3.098,3 6.292,6.109 9.558,9.31c-3.098,2.987 -6.354,6.145 -9.728,9.443c-3.248,-3.19 -6.425,-6.286 -9.513,-9.271c3.369,-3.305 6.612,-6.475 9.683,-9.482m-12.28,6.976c-3.401,-3.275 -6.685,-6.406 -9.814,-9.363c3.415,-3.298 6.698,-6.458 9.814,-9.449c3.116,2.991 6.401,6.151 9.814,9.449c-3.128,2.957 -6.412,6.088 -9.814,9.363m-23.973,23.524c-3.353,-3.322 -6.581,-6.512 -9.654,-9.531c3.178,-3.171 6.307,-6.27 9.377,-9.289c3.048,3.039 6.262,6.236 9.608,9.563c-3.055,3.011 -6.168,6.1 -9.331,9.257m-21.325,2.222c3.022,-3.069 6.123,-6.198 9.292,-9.373c3.021,3.071 6.211,6.298 9.534,9.651c-3.155,3.162 -15.781,2.771 -18.826,-0.278m-26.136,1.477c2.865,3.134 20.563,4.194 23.764,0.935c2.992,3.102 20.668,3.67 23.822,0.51c3.031,3.051 20.809,3.19 23.848,0.162c3.041,3.028 20.816,2.889 23.848,-0.162c3.155,3.159 20.829,2.592 23.823,-0.51c3.201,3.259 20.897,2.199 23.763,-0.935c3.346,3.499 5.867,0.784 2.538,-2.792c7.528,-8.334 12.03,-13.761 11.548,-14.253c-0.46,-0.523 -5.543,4.274 -13.457,12.21c-3.032,-3.239 -6.193,-6.564 -9.462,-9.954c7.596,-8.185 12.149,-13.483 11.664,-13.956c-0.458,-0.502 -5.592,4.189 -13.571,11.986c-3.087,-3.183 -6.264,-6.418 -9.531,-9.693c7.658,-8.03 12.244,-13.203 11.759,-13.665c-0.461,-0.488 -5.643,4.095 -13.682,11.741c-3.276,-3.269 -6.51,-6.455 -9.689,-9.543c7.691,-7.864 12.309,-12.91 11.814,-13.365c-0.472,-0.478 -5.694,3.984 -13.772,11.464c-3.393,-3.282 -6.721,-6.451 -9.956,-9.493c7.711,-7.687 12.348,-12.604 11.835,-13.057c-0.485,-0.475 -5.747,3.86 -13.857,11.163c-3.585,-3.352 -7.052,-6.536 -10.349,-9.523c7.732,-7.514 12.388,-12.311 11.852,-12.769c-0.505,-0.478 -5.818,3.736 -13.965,10.863c-3.933,-3.535 -22.372,-3.534 -26.306,-0c-8.146,-7.127 -13.458,-11.341 -13.964,-10.863c-0.536,0.458 4.122,5.255 11.852,12.769c-3.301,2.987 -6.762,6.172 -10.35,9.523c-8.109,-7.303 -13.371,-11.638 -13.856,-11.163c-0.513,0.453 4.122,5.37 11.835,13.057c-3.237,3.041 -6.563,6.211 -9.956,9.493c-8.078,-7.48 -13.302,-11.942 -13.773,-11.464c-0.496,0.455 4.121,5.501 11.814,13.365c-3.18,3.09 -6.413,6.274 -9.688,9.543c-8.039,-7.646 -13.22,-12.229 -13.682,-11.741c-0.485,0.462 4.102,5.635 11.757,13.665c-3.265,3.275 -6.444,6.51 -9.53,9.693c-7.981,-7.797 -13.113,-12.488 -13.57,-11.986c-0.482,0.473 4.065,5.771 11.664,13.956c-3.269,3.39 -6.429,6.715 -9.464,9.954c-7.913,-7.936 -12.997,-12.733 -13.456,-12.21c-0.482,0.492 4.019,5.919 11.548,14.253c-3.33,3.576 -0.804,6.291 2.538,2.792" style="fill:#fec231;fill-rule:nonzero;"/></g>
+<path d="M78.739,116.009c0.003,-3.184 -1.726,-4.781 -5.19,-4.785l-2.493,-0.004l-0.01,9.557l2.493,0.002c3.463,0.005 5.195,-1.585 5.2,-4.77m-5.233,31.879c5.261,0.007 7.897,-1.997 7.901,-6.014c0.006,-4.016 -2.624,-6.027 -7.886,-6.033l-2.494,-0.004l-0.014,12.048l2.493,0.003Zm-23.825,-52.999l27.109,0.031c3.461,0.004 6.63,0.408 9.504,1.207c2.87,0.8 5.329,1.98 7.37,3.541c2.039,1.559 3.629,3.501 4.768,5.821c1.141,2.322 1.711,5.04 1.707,8.156c-0.003,2.216 -0.283,4.102 -0.84,5.66c-0.557,1.557 -1.144,2.855 -1.77,3.892c-0.765,1.245 -1.629,2.283 -2.6,3.113c1.524,0.973 2.907,2.221 4.15,3.744c1.037,1.318 1.985,2.981 2.851,4.99c0.863,2.01 1.294,4.466 1.289,7.376c-0.004,3.323 -0.597,6.335 -1.777,9.033c-1.181,2.7 -2.864,5.001 -5.046,6.902c-2.183,1.903 -4.848,3.354 -8.001,4.352c-3.154,1.002 -6.67,1.5 -10.546,1.495l-28.252,-0.034l0.084,-69.279Z" style="fill-rule:nonzero;"/>
+<path d="M127.641,129.673c-0.003,2.01 0.375,3.897 1.136,5.663c0.76,1.765 1.796,3.308 3.111,4.625c1.314,1.318 2.855,2.359 4.62,3.122c1.763,0.765 3.649,1.147 5.659,1.15c2.006,0.001 3.893,-0.377 5.662,-1.137c1.767,-0.759 3.307,-1.794 4.627,-3.109c1.313,-1.315 2.355,-2.854 3.12,-4.618c0.763,-1.766 1.147,-3.651 1.15,-5.661c0.001,-2.007 -0.378,-3.895 -1.138,-5.661c-0.759,-1.767 -1.798,-3.308 -3.108,-4.626c-1.315,-1.316 -2.853,-2.358 -4.619,-3.123c-1.765,-0.763 -3.653,-1.147 -5.66,-1.148c-2.01,-0.003 -3.895,0.376 -5.66,1.135c-1.769,0.761 -3.311,1.797 -4.629,3.111c-1.317,1.314 -2.356,2.854 -3.121,4.619c-0.765,1.764 -1.147,3.651 -1.15,5.658m-21.811,-0.026c0.007,-4.985 0.964,-9.693 2.874,-14.124c1.908,-4.426 4.512,-8.284 7.803,-11.57c3.292,-3.284 7.157,-5.877 11.593,-7.776c4.431,-1.897 9.142,-2.846 14.128,-2.84c4.984,0.007 9.693,0.965 14.124,2.874c4.426,1.911 8.283,4.512 11.569,7.803c3.287,3.295 5.875,7.158 7.777,11.59c1.901,4.435 2.847,9.145 2.84,14.13c-0.007,4.986 -0.964,9.694 -2.875,14.122c-1.91,4.431 -4.511,8.289 -7.803,11.572c-3.295,3.287 -7.158,5.88 -11.589,7.777c-4.435,1.898 -9.146,2.846 -14.131,2.839c-4.985,-0.006 -9.694,-0.964 -14.121,-2.871c-4.431,-1.911 -8.29,-4.512 -11.574,-7.806c-3.285,-3.292 -5.877,-7.155 -7.776,-11.592c-1.9,-4.432 -2.845,-9.143 -2.839,-14.128" style="fill-rule:nonzero;"/>
+<path d="M184.291,95.049l18.177,0.022l19.081,26.718l0.032,-26.696l21.707,0.027l-0.082,69.28l-18.283,-0.023l-18.974,-26.612l-0.033,26.59l-21.707,-0.026l0.082,-69.28Z" style="fill-rule:nonzero;"/>
+<path d="M80.594,114.64c0.004,-3.097 -1.679,-4.648 -5.045,-4.652l-2.425,-0.003l-0.01,9.293l2.424,0.003c3.367,0.004 5.053,-1.542 5.056,-4.641m-5.089,31.007c5.117,0.007 7.68,-1.944 7.684,-5.85c0.007,-3.905 -2.551,-5.862 -7.668,-5.869l-2.424,-0.001l-0.016,11.718l2.424,0.002Zm-23.172,-51.549l26.366,0.033c3.367,0.004 6.446,0.397 9.242,1.173c2.794,0.777 5.183,1.924 7.167,3.443c1.985,1.516 3.534,3.405 4.642,5.663c1.11,2.258 1.66,4.901 1.658,7.931c-0.002,2.157 -0.275,3.991 -0.816,5.506c-0.541,1.514 -1.114,2.776 -1.721,3.785c-0.743,1.211 -1.586,2.221 -2.53,3.028c1.48,0.945 2.827,2.159 4.038,3.642c1.009,1.281 1.932,2.898 2.771,4.853c0.838,1.954 1.258,4.344 1.253,7.172c-0.004,3.233 -0.581,6.163 -1.725,8.787c-1.15,2.626 -2.785,4.864 -4.909,6.713c-2.123,1.851 -4.719,3.261 -7.784,4.232c-3.066,0.975 -6.483,1.458 -10.254,1.454l-27.479,-0.034l0.081,-67.381Z" style="fill:#fff;fill-rule:nonzero;"/>
+<path d="M128.159,127.93c-0.003,1.955 0.365,3.79 1.106,5.507c0.737,1.719 1.745,3.218 3.023,4.5c1.277,1.281 2.775,2.293 4.493,3.037c1.715,0.743 3.548,1.115 5.504,1.117c1.951,0.003 3.789,-0.365 5.506,-1.105c1.72,-0.737 3.218,-1.748 4.499,-3.024c1.28,-1.278 2.294,-2.777 3.037,-4.492c0.742,-1.717 1.115,-3.551 1.119,-5.506c0,-1.953 -0.368,-3.788 -1.106,-5.506c-0.739,-1.719 -1.748,-3.217 -3.023,-4.499c-1.281,-1.28 -2.778,-2.292 -4.494,-3.037c-1.717,-0.742 -3.552,-1.114 -5.505,-1.117c-1.954,-0.001 -3.79,0.367 -5.507,1.105c-1.717,0.74 -3.218,1.748 -4.496,3.024c-1.285,1.28 -2.294,2.777 -3.038,4.492c-0.743,1.717 -1.114,3.553 -1.118,5.504m-21.214,-0.025c0.007,-4.849 0.936,-9.428 2.794,-13.735c1.858,-4.308 4.388,-8.059 7.591,-11.255c3.201,-3.194 6.96,-5.714 11.271,-7.562c4.313,-1.848 8.894,-2.768 13.743,-2.762c4.848,0.006 9.425,0.938 13.734,2.795c4.31,1.859 8.061,4.388 11.258,7.589c3.194,3.204 5.713,6.962 7.562,11.274c1.847,4.312 2.768,8.892 2.762,13.741c-0.007,4.85 -0.938,9.43 -2.794,13.736c-1.858,4.309 -4.389,8.061 -7.591,11.253c-3.204,3.197 -6.963,5.718 -11.272,7.564c-4.315,1.847 -8.896,2.768 -13.742,2.762c-4.851,-0.006 -9.431,-0.938 -13.737,-2.795c-4.307,-1.856 -8.061,-4.386 -11.255,-7.59c-3.194,-3.201 -5.716,-6.96 -7.565,-11.273c-1.845,-4.311 -2.766,-8.892 -2.759,-13.742" style="fill:#fff;fill-rule:nonzero;"/>
+<path d="M183.255,94.256l17.676,0.022l18.558,25.984l0.032,-25.962l21.112,0.024l-0.078,67.383l-17.781,-0.023l-18.455,-25.884l-0.031,25.862l-21.115,-0.025l0.082,-67.381Z" style="fill:#fff;fill-rule:nonzero;"/>
+</g></g>
+<defs><radialGradient id="_Radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(92.6478,0,0,92.6478,146.443,127.609)"><stop offset="0" style="stop-color:#fec231;stop-opacity:1"/><stop offset="0.39" style="stop-color:#fec231;stop-opacity:1"/><stop offset="0.99" style="stop-color:#ef4023;stop-opacity:1"/><stop offset="1" style="stop-color:#ef4023;stop-opacity:1"/></radialGradient></defs>
+</svg></div>
+  <div class="brand"><b>Bon Tacos</b><small>French tacos · frytki i ser w środku</small></div>
+  <span class="chip" id="today" hidden><i aria-hidden="true"></i><span></span></span>
+</header>
+<nav class="tabs" id="bar" aria-label="Kategorie menu"><div class="tabrow" id="cats"></div></nav>
+<main class="gutter" id="menu"></main>
+<footer>
+  <div class="gutter foot">
+    <div><h3>Gdzie</h3><p>plac Dominikański 3, Wrocław<br>przejście podziemne przy Galerii Dominikańskiej</p></div>
+    <div><h3>Godziny</h3><ul class="hours" id="hours"></ul></div>
+    <div><h3>Napoje</h3><p class="fine">Kaucja za opakowanie napoju jest wykazana oddzielnie od ceny produktu.</p></div>
+  </div>
+</footer>
+
+<script>
+var G = function (n, img) { return { n: n, p: 29.5, img: img }; };
+var MENU = [
+  { id: "autorskie", nav: "Autorskie", title: "Produkty autorskie", items: [
+    { n: "Tacos Paris", p: 25, img: "paris" },
+    { n: "Tacos Lyon", p: 25, img: "lyon" },
+    { n: "Tacos Marseille", p: 25, img: "marseille" } ] },
+  { id: "tacos", nav: "Tacos", title: "Tacos", gratine: true, items: [
+    { n: "Classic Tacos", p: 25, img: "classic", g: null },
+    { n: "Beef Deluxe Tacos", p: 25, img: "beef-deluxe", g: G("Gratiné Beef Deluxe Tacos", "beef-deluxe-gratine") },
+    { n: "Crispy Chicken Deluxe Tacos", p: 25, img: "crispy-chicken-deluxe", g: G("Gratiné Crispy Chicken Deluxe Tacos", "crispy-chicken-deluxe-gratine") },
+    { n: "Curry Chicken Tacos", p: 25, img: "curry-chicken", g: G("Gratiné Chicken Curry Tacos", "curry-chicken-gratine") },
+    { n: "Cordon Bleu Tacos", p: 25, img: "cordon-bleu", g: G("Gratiné Cordon Bleu Tacos", "cordon-bleu-gratine") },
+    { n: "Double Cheese Tacos", p: 25, img: "double-cheese", g: G("Gratiné Double Cheese Tacos", "double-cheese-gratine") },
+    { n: "Falafel Tacos", p: 25, img: "falafel", g: G("Gratiné Falafel Tacos", "falafel-gratine") } ] },
+  { id: "ricebox", nav: "Rice box", title: "Rice box", items: [
+    { n: "Golden Sauce Crispy Chicken Rice Box", p: 25, img: "rice-golden" },
+    { n: "Sweet Chili Chicken Rice Box", p: 25, img: "rice-sweet-chili" } ] },
+  { id: "dodatki", nav: "Dodatki", title: "Dodatki", items: [
+    { n: "French Fries", p: 8, img: "fries" },
+    { n: "Onion Rings", p: 8, img: "onion-rings" },
+    { n: "Nuggets", p: 12, img: "nuggets" },
+    { n: "Mozzarella Sticks", p: 9.5, img: "mozzarella-sticks" },
+    { n: "Jalapeño Cheese Balls", p: 12, img: "jalapeno-balls" },
+    { n: "Bon Box – Classic Box", p: 35, img: "bon-box" } ] },
+  { id: "napoje", nav: "Napoje", title: "Napoje", drinks: true, items: [
+    { n: "Woda niegazowana", p: 5, img: "water-still" },
+    { n: "Woda gazowana", p: 5, img: "water-sparkling" },
+    { n: "Coca-Cola", p: 6.5, img: "coca-cola" },
+    { n: "Fanta", p: 6.5, img: "fanta" },
+    { n: "Coca-Cola Zero", p: 6.5, img: "coca-cola-zero" },
+    { n: "Sprite", p: 6.5, img: "sprite" } ] },
+  { id: "desery", nav: "Desery", title: "Desery", items: [
+    { n: "Nutella Oreo Tiramisu", p: 14.5, img: "tiramisu-nutella-oreo" },
+    { n: "Pistachio Raspberry Tiramisu", p: 14.5, img: "tiramisu-pistachio" },
+    { n: "Mango Flavour Tiramisu", p: 14.5, img: "tiramisu-mango" } ] }
+];
+var DEPOSIT = 0.5;
+var HOURS = [["Poniedziałek", 10, 22], ["Wtorek", 10, 22], ["Środa", 10, 22], ["Czwartek", 10, 22],
+  ["Piątek", 10, 2], ["Sobota", 10, 2], ["Niedziela", 12, 20]];
+function zl(v) { return v.toFixed(2).replace(".", ",") + " zł"; }
+function src(img) { return "img/" + img + ".webp"; }
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+function variant(it, g) { return g && it.g ? it.g : it; }
+// Missing image (e.g. a drink photo not made yet): drop it and mark its box, so the layout stays clean.
+var IMGERR = ' onerror="var b=this.closest(\'[data-ph]\');if(b)b.classList.add(\'noimg\');this.remove()"';
+function hhmm(x) { return (x < 10 ? "0" : "") + x + ":00"; }
+var NOW = new Date(), DOW = (NOW.getDay() + 6) % 7, HNOW = NOW.getHours() + NOW.getMinutes() / 60;
+function renderHours(ul) {
+  HOURS.forEach(function (r, i) {
+    var li = document.createElement("li");
+    if (i === DOW) li.className = "is-today";
+    li.innerHTML = "<span>" + r[0] + "</span><span>" + hhmm(r[1]) + "–" + hhmm(r[2]) + "</span>";
+    ul.appendChild(li);
+  });
+}
+function openUntil() {
+  var t = HOURS[DOW], y = HOURS[(DOW + 6) % 7];
+  if (y[2] < y[1] && HNOW < y[2]) return y[2];
+  var close = t[2] < t[1] ? t[2] + 24 : t[2];
+  if (HNOW >= t[1] && HNOW < close) return t[2];
+  return null;
+}
+function openChip(el) {
+  var u = openUntil();
+  el.querySelector("span").textContent = u !== null ? "Otwarte do " + hhmm(u) : "Teraz zamknięte";
+  if (u === null) el.classList.add("closed");
+  el.hidden = false;
+}
+// Scroll-spy: marks the nav link of the section under the sticky bar with aria-current.
+function setupSpy(nav, bar) {
+  var links = Array.prototype.slice.call(nav.querySelectorAll("a"));
+  function set(id) {
+    links.forEach(function (a) {
+      var on = a.dataset.id === id;
+      if (on && a.getAttribute("aria-current") !== "true") {
+        nav.scrollTo({ left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: "smooth" });
+      }
+      a.setAttribute("aria-current", String(on));
+    });
+  }
+  function spy() {
+    var line = bar.getBoundingClientRect().bottom + 40, id = MENU[0].id;
+    MENU.forEach(function (s) { var el = document.getElementById(s.id); if (el && el.getBoundingClientRect().top <= line) id = s.id; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) id = MENU[MENU.length - 1].id;
+    set(id);
+  }
+  var tick = false;
+  window.addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(function () { spy(); tick = false; }); } }, { passive: true });
+  window.addEventListener("resize", spy);
+  spy();
+}
+
+(function () {
+  var main = document.getElementById("menu"), cats = document.getElementById("cats"), gratine = false;
+  function tile(it, si, i) {
+    var price = zl(it.p) + (MENU[si].drinks ? "<small>+ " + zl(DEPOSIT) + " kaucji</small>" : "");
+    return '<li class="tile" data-s="' + si + '" data-i="' + i + '"><div class="ph" data-ph="' + esc(it.n) + '">' +
+      '<img src="' + src(it.img) + '" alt="' + esc(it.n) + '" width="1200" height="900" loading="lazy" decoding="async"' + IMGERR + '>' +
+      '<span class="badge">' + price + '</span></div><span class="name">' + esc(it.n) + "</span></li>";
+  }
+  MENU.forEach(function (sec, si) {
+    cats.insertAdjacentHTML("beforeend", '<a href="#' + sec.id + '" data-id="' + sec.id + '">' + esc(sec.nav) + "</a>");
+    var head = '<div class="sec-head"><div><h2>' + esc(sec.title) + "</h2>" +
+      (sec.gratine ? '<p class="sec-sub">Gratiné: zapiekany z serem na wierzchu, +4,50 zł</p>' : "") + "</div>" +
+      (sec.gratine ? '<div class="switch" role="group" aria-label="Wersja tacosa"><button type="button" data-v="c" aria-pressed="true">Klasyczne</button><button type="button" data-v="g" aria-pressed="false">Gratiné</button></div>' : "") +
+      "</div>";
+    main.insertAdjacentHTML("beforeend", '<section class="sec" id="' + sec.id + '">' + head + '<ul class="grid">' +
+      sec.items.map(function (it, i) { return tile(it, si, i); }).join("") + "</ul></section>");
+  });
+  function paint() {
+    document.querySelectorAll("#tacos .tile").forEach(function (li, i) {
+      var it = MENU[1].items[i], na = gratine && !it.g, v = variant(it, gratine);
+      li.classList.toggle("na", na);
+      var img = li.querySelector("img"); if (img) { img.src = src(v.img); img.alt = v.n; }
+      li.querySelector(".name").textContent = v.n;
+      li.querySelector(".badge").textContent = na ? "Tylko klasyczny" : zl(v.p);
+    });
+    document.querySelectorAll("#tacos .switch button").forEach(function (b) { b.setAttribute("aria-pressed", String((b.dataset.v === "g") === gratine)); });
+  }
+  document.querySelector("#tacos .switch").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (b) { gratine = b.dataset.v === "g"; paint(); }
+  });
+  renderHours(document.getElementById("hours"));
+  openChip(document.getElementById("today"));
+  setupSpy(cats, document.getElementById("bar"));
+})();
+</script>
+</body>
+</html>
