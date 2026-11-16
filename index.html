@@ -12,41 +12,41 @@ img { max-width: 100%; }
 [hidden] { display: none !important; }
 </style>
 <title>Bon Tacos – Menu</title>
-<meta name="theme-color" content="#121618">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Poppins:wght@400;500;600;700;800;900&display=swap">
 <style>
-/* Layout: digital menu board. Ink screen, deep-red packshots glowing in a 2-col grid (4-col desktop),
-   giant category headers, yellow price badges, sticky tabs. Single dark look by choice. */
+/* Layout: menu board on a white page (client's request). Deep-red packshots in a 2-col grid (4-col desktop),
+   giant category headers over a red rule, yellow price badges, sticky tabs. Single light look by choice. */
 :root {
-  --ink: #121618; --panel: #1b2023; --line: #2a3135;
-  --cream: #fff7ea; --muted: #a9a196;
+  --ink: #121618; --bg: #ffffff; --panel: #f5f2ed; --line: #e6e0d6;
+  --cream: #fff7ea; --muted: #6b6359;
   --red: #ed1b2e; --wine: #9e1620; --yellow: #fec231;
   --font-display: "Climate Crisis", "Arial Black", Impact, sans-serif;
   --font-body: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
-  color-scheme: dark;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--ink); color: var(--cream); font-family: var(--font-body); font-size: 15px; line-height: 1.35; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--ink); }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.35; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
 img { display: block; max-width: 100%; }
 button { font: inherit; color: inherit; }
 :focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
 .gutter { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 
 header.top { display: flex; align-items: center; gap: 12px; padding-block: 16px 12px; }
-.logo { width: 52px; height: 52px; flex: none; border-radius: 50%; overflow: hidden; background: #fff; box-shadow: 0 0 0 3px var(--red); }
+.logo { width: 52px; height: 52px; flex: none; border-radius: 50%; overflow: hidden; background: #fff; box-shadow: 0 0 0 3px var(--red), 0 4px 12px rgba(18, 22, 24, .12); }
 .logo svg { width: 100%; height: 100%; display: block; }
 .brand { min-width: 0; flex: 1; }
-.brand b { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(22px, 6vw, 34px); line-height: 1; letter-spacing: .02em; text-transform: uppercase; }
+.brand b { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(22px, 6vw, 34px); line-height: 1; letter-spacing: .02em; text-transform: uppercase; color: var(--red); }
 .brand small { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); font-weight: 500; }
 .chip { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); font-size: 12px; font-weight: 700; white-space: nowrap; }
-.chip i { width: 8px; height: 8px; border-radius: 50%; background: #2fd06f; box-shadow: 0 0 8px #2fd06f; }
+.chip i { width: 8px; height: 8px; border-radius: 50%; background: #1f9d55; }
 .chip.closed i { background: var(--muted); box-shadow: none; }
 
-nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(18, 22, 24, .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 .tabrow { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); max-width: 1180px; margin: 0 auto; }
 .tabrow::-webkit-scrollbar { display: none; }
 .tabrow a { flex: none; min-height: 38px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 10px; color: var(--muted); text-decoration: none; font-weight: 700; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; }
@@ -63,18 +63,18 @@ h2 { margin: 0; font-family: var(--font-display); font-weight: 400; text-transfo
 
 .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .tile { position: relative; display: grid; gap: 8px; }
-.ph { position: relative; aspect-ratio: 4 / 3; max-width: 100%; border-radius: 14px; overflow: hidden; background: radial-gradient(circle at 50% 40%, #b11c27, var(--wine) 70%); box-shadow: 0 10px 30px -10px rgba(237, 27, 46, .45); }
+.ph { position: relative; aspect-ratio: 4 / 3; max-width: 100%; border-radius: 14px; overflow: hidden; background: radial-gradient(circle at 50% 40%, #b11c27, var(--wine) 70%); box-shadow: 0 10px 24px -12px rgba(18, 22, 24, .35); }
 .ph img { width: 100%; height: 100%; object-fit: cover; transition: opacity .2s; }
 .ph.noimg::after { content: attr(data-ph); position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-size: 22px; color: rgba(255, 247, 234, .5); text-transform: uppercase; }
-.badge { position: absolute; left: 8px; bottom: 8px; padding: 5px 10px 4px; border-radius: 8px; background: var(--yellow); color: var(--ink); font-weight: 900; font-size: 15px; font-variant-numeric: tabular-nums; box-shadow: 0 4px 12px rgba(0, 0, 0, .35); }
+.badge { position: absolute; left: 8px; bottom: 8px; padding: 5px 10px 4px; border-radius: 8px; background: var(--yellow); color: var(--ink); font-weight: 900; font-size: 15px; font-variant-numeric: tabular-nums; box-shadow: 0 3px 8px rgba(18, 22, 24, .25); }
 .badge small { font-weight: 700; font-size: 10px; display: block; line-height: 1.1; }
 .name { font-weight: 600; font-size: 14px; line-height: 1.25; overflow-wrap: anywhere; }
 .tile.na .ph img { filter: grayscale(1); opacity: .35; }
 .tile.na .badge { background: var(--panel); color: var(--muted); font-size: 11px; font-weight: 700; }
 
-footer { margin-top: 48px; padding-block: 28px calc(32px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: #0d1012; }
+footer { margin-top: 48px; padding-block: 28px calc(32px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: #faf7f2; }
 .foot { display: grid; gap: 24px; }
-footer h3 { margin: 0 0 8px; font-family: var(--font-display); font-weight: 400; font-size: 16px; text-transform: uppercase; color: var(--yellow); }
+footer h3 { margin: 0 0 8px; font-family: var(--font-display); font-weight: 400; font-size: 16px; text-transform: uppercase; color: var(--red); }
 footer p { margin: 0; font-size: 14px; }
 .hours { list-style: none; margin: 0; padding: 0; max-width: 320px; }
 .hours li { display: flex; justify-content: space-between; gap: 16px; padding: 4px 10px; border-radius: 8px; font-size: 14px; font-variant-numeric: tabular-nums; }
